@@ -45,6 +45,8 @@ const client = new Client({
     session: sessionCfg
 });
 
+// AUTHENTICATED
+// when QR Code scanned
 client.on('authenticated', (session) => {
     console.log('AUTHENTICATED', session);
     sessionCfg = session;
@@ -55,6 +57,8 @@ client.on('authenticated', (session) => {
     });
 });
 
+// INCOMING MESSAGE
+// when whatsapp receive message
 client.on('message', msg => {
     msg.reply('Perintah tidak dikenal. Mohon hubungi pengembang untuk pesan lebih lanjut.');
     if (msg.body == '!ping') {
@@ -62,6 +66,7 @@ client.on('message', msg => {
     }
 });
 
+// INITIALIZE
 client.initialize();
 
 // Socket.io
